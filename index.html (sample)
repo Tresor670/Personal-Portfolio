@@ -1,0 +1,209 @@
+<!-- File: index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduLearn - Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>EduLearn</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section>
+    <h2>Welcome to EduLearn</h2>
+    <p>Your portal to quality online education.</p>
+    <img src="images/elearning.jpg" alt="Students learning online" width="300">
+
+    <article>
+      <h3>Why Choose Us?</h3>
+      <ul>
+        <li>Flexible Learning</li>
+        <li>Expert Tutors</li>
+        <li>Certified Courses</li>
+      </ul>
+    </article>
+
+    <aside>
+      <h4>News</h4>
+      <ol>
+        <li>New course on AI launched!</li>
+        <li>Summer intake open.</li>
+      </ol>
+    </aside>
+
+    <button onclick="toggleMode()">Toggle Light/Dark Mode</button>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 EduLearn. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
+
+<!-- File: about.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About EduLearn</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>EduLearn</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section>
+    <h2>About Us</h2>
+    <p>EduLearn is a digital learning platform providing access to diverse courses globally.</p>
+
+    <table>
+      <tr><th>Year</th><th>Milestone</th></tr>
+      <tr><td>2022</td><td>Founded</td></tr>
+      <tr><td>2024</td><td>100K+ Students</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Meet Our Students</h2>
+    <div id="student-list"></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 EduLearn</p>
+  </footer>
+  <script src="load-xml.js"></script>
+</body>
+</html>
+
+<!-- File: contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact EduLearn</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>EduLearn</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section>
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <label>Name: <input type="text" id="name" required></label><br>
+      <label>Email: <input type="email" id="email" required></label><br>
+      <input type="submit" value="Send">
+    </form>
+    <p id="formMessage"></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 EduLearn</p>
+  </footer>
+  <script src="validate-form.js"></script>
+</body>
+</html>
+
+/* File: styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+nav ul {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+}
+section, footer {
+  padding: 20px;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 5px;
+}
+@media screen and (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+  }
+}
+
+/* File: script.js */
+function toggleMode() {
+  document.body.classList.toggle("dark-mode");
+}
+
+/* File: validate-form.js */
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("formMessage");
+
+  if (!name || !email.includes("@")) {
+    message.textContent = "Please enter a valid name and email.";
+  } else {
+    message.textContent = "Thank you for contacting us!";
+  }
+});
+
+/* File: load-xml.js */
+fetch("data.xml")
+  .then(response => response.text())
+  .then(data => {
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(data, "application/xml");
+    const students = xml.getElementsByTagName("student");
+    let output = "<ul>";
+    for (let student of students) {
+      const name = student.getElementsByTagName("name")[0].textContent;
+      const course = student.getElementsByTagName("course")[0].textContent;
+      output += `<li>${name} - ${course}</li>`;
+    }
+    output += "</ul>";
+    document.getElementById("student-list").innerHTML = output;
+  });
+
+<!-- File: data.xml -->
+<?xml version="1.0"?>
+<students>
+  <student>
+    <name>Alice</name>
+    <course>Web Development</course>
+  </student>
+  <student>
+    <name>Bob</name>
+    <course>Cybersecurity</course>
+  </student>
+</students>
