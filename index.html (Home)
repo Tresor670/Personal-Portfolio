@@ -6,6 +6,7 @@
     <title>About Me - Mugabo Tresor</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -28,21 +29,26 @@
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
-    <!-- Header -->
+    <!-- Header: Navigation bar for the website -->
     <header class="bg-white shadow-md py-4 px-6">
         <div class="container flex justify-between items-center">
+            <!-- Website Logo/Brand -->
             <a href="index.html" class="text-2xl font-bold text-gray-800 rounded-md p-2 hover:bg-gray-100 transition duration-300">MyWebsite</a>
             <nav>
                 <ul class="flex space-x-6">
-                    <li><a href="index.html" class="text-indigo-500 font-medium nav-link rounded-md p-2 bg-gray-100 transition duration-300">Home</a></li>
-                    <li><a href="about.html" class="text-gray-600 hover:text-indigo-500 font-medium nav-link rounded-md p-2 hover:bg-gray-100 transition duration-300">About</a></li>
+                    <!-- Home Link: Active on the home page, inactive on other pages -->
+                    <li><a href="index.html" class="text-gray-600 hover:text-indigo-500 font-medium nav-link rounded-md p-2 hover:bg-gray-100 transition duration-300">Home</a></li>
+                    <!-- About Link: Active on the about page, inactive on other pages -->
+                    <!-- This link is now styled as active because this is the 'about.html' page -->
+                    <li><a href="about.html" class="text-indigo-500 font-medium nav-link rounded-md p-2 bg-gray-100 transition duration-300">About</a></li>
+                    <!-- Contact Link: Inactive by default -->
                     <li><a href="contact.html" class="text-gray-600 hover:text-indigo-500 font-medium nav-link rounded-md p-2 hover:bg-gray-100 transition duration-300">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- Main Content: Displays information about Mugabo Tresor -->
     <main class="flex-grow flex items-center justify-center p-4">
         <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-2xl w-full">
             <h1 class="text-5xl font-extrabold text-gray-900 mb-6 leading-tight">Learn More About Me</h1>
@@ -54,13 +60,16 @@
                 I bring a comprehensive skill set to the table, combining strong programming expertise with a keen eye for system architecture and user experience. My goal is to build robust, scalable, and intuitive solutions.
             </p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="about.html" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105">My Experience & Skills</a>
+                <!-- Button for Experience & Skills: Changed to '#' as it's on the About page.
+                     Consider creating a separate 'skills.html' or 'portfolio.html' for this in the future. -->
+                <a href="#" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105">My Experience & Skills</a>
+                <!-- Button to Contact Page -->
                 <a href="contact.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105">Get in Touch</a>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer: Copyright and policy links -->
     <footer class="bg-gray-800 text-white py-6 px-6 mt-auto">
         <div class="container text-center">
             <p>&copy; 2025 My Awesome Website. All rights reserved.</p>
